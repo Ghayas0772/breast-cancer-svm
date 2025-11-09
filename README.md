@@ -17,3 +17,20 @@ and activiate the enverion
 to deactivate the envirnoment 
 - conda deactivate
 >>>>>>> 228d529 (Initial commit: add breast cancer SVM project files)
+
+
+
+Next Steps:
+
+Document the REST API
+You can now document it in a README or as a Swagger/OpenAPI spec. Example:
+
+POST /predict
+{
+    "features": [5, 1, 1, 1, 2, 1, 3, 1]
+}
+
+
+Test API with Postman or curl – You don’t need the HTML form for API testing.
+
+Enhance index.html – Add descriptive labels matching your feature names for cl

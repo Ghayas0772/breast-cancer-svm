@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breast Cancer Prediction</title>
+    <style>
+        body { font-family: Arial; background-color: #f4f4f9; text-align: center; padding: 20px; }
+        form { display: inline-block; text-align: left; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input, button { width: 100%; padding: 8px; margin: 5px 0; }
+        button { background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+    <h2>Breast Cancer Prediction</h2>
+    <p>Enter the following cell features:</p>
+
+    <form action="/predict" method="post">
+        <label>Clump Thickness:</label>
+        <input type="number" name="Clump_Thickness" step="any" required><br>
+
+        <label>Uniformity of Cell Size:</label>
+        <input type="number" name="Uniformity_Cell_Size" step="any" required><br>
+
+        <label>Uniformity of Cell Shape:</label>
+        <input type="number" name="Uniformity_Cell_Shape" step="any" required><br>
+
+        <label>Marginal Adhesion:</label>
+        <input type="number" name="Marginal_Adhesion" step="any" required><br>
+
+        <label>Single Epithelial Cell Size:</label>
+        <input type="number" name="Single_Epithelial_Cell_Size" step="any" required><br>
+
+        <label>Bare Nuclei:</label>
+        <input type="number" name="Bare_Nuclei" step="any" required><br>
+
+        <label>Bland Chromatin:</label>
+        <input type="number" name="Bland_Chromatin" step="any" required><br>
+
+        <label>Normal Nucleoli:</label>
+        <input type="number" name="Normal_Nucleoli" step="any" required><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+        <h3 style="margin-top:20px;">{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>

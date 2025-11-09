@@ -31,6 +31,6 @@ POST /predict
 }
 
 
-Test API with Postman or curl – You don’t need the HTML form for API testing.
+Test API with Postman or curl – We don’t need the HTML form for API testing.
 
 Enhance index.html – Add descriptive labels matching your feature names for cl

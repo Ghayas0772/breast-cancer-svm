@@ -1,36 +1,42 @@
-<<<<<<< HEAD
-# breast-cancer-svm
-=======
+# Breast Cancer Classification Project
 
-1. [GithubAccount](https://github.com)
-2. [herokuAccount](https://heroku.com)
-3. [vscode](https://code.visualstudio.com/)
-4. [GitCLI](https://git-scm.com/book/en/v2/getting-Started-the-Command-line)
-5. create new envirnoment but before check the python version 
+## Project Overview
+This project focuses on building classification models to predict **breast cancer** type (benign or malignant) using the **Breast Cancer Wisconsin dataset**. The analysis includes **data exploration, preprocessing, outlier handling, and correlation analysis** to prepare the dataset for machine learning models such as Logistic Regression, KNN, and SVM.
 
-....
-- python --version
-- conda create -p venv python=3.12 -y
+---
 
-and activiate the enverion 
-- conda activate venv 
-to deactivate the envirnoment 
-- conda deactivate
->>>>>>> 228d529 (Initial commit: add breast cancer SVM project files)
+## Dataset
+- **Source:** Breast Cancer Wisconsin dataset
+- **Number of samples:** 699
+- **Number of features:** 11
+- **Target variable:** `Class` (2 → benign, 4 → malignant, later mapped to 0 → benign, 1 → malignant)
+- **Feature types:**
+  - 10 numeric features
+  - 1 object feature (`Bare_Nuclei` containing numeric values and some missing entries `?`)
 
+**Columns:**
+- ID
+- Clump_Thickness
+- Uniformity_Cell_Size
+- Uniformity_Cell_Shape
+- Marginal_Adhesion
+- Single_Epithelial_Cell_Size
+- Bare_Nuclei
+- Bland_Chromatin
+- Normal_Nucleoli
+- Mitoses
+- Class
 
+---
 
-Next Steps:
+## Data Loading & Inspection
+```python
+import pandas as pd
+import numpy as np
 
-Document the REST API
-You can now document it in a README or as a Swagger/OpenAPI spec. Example:
-
-POST /predict
-{
-    "features": [5, 1, 1, 1, 2, 1, 3, 1]
-}
-
-
-Test API with Postman or curl – We don’t need the HTML form for API testing.
-
-Enhance index.html – Add descriptive labels matching your feature names for cl
+# Load dataset
+path = "D:\\Eductaional\\NU\\ANA 680\\Modal 1\\Assignment\\Assignment1\\datasets\\breast-cancer-wisconsin.data"
+columns = ["ID", "Clump_Thickness", "Uniformity_Cell_Size", "Uniformity_Cell_Shape",
+           "Marginal_Adhesion", "Single_Epithelial_Cell_Size", "Bare_Nuclei",
+           "Bland_Chromatin", "Normal_Nucleoli", "Mitoses", "Class"]
+data = pd.read_csv(path, names=columns, sep=',')

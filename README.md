@@ -41,6 +41,8 @@ columns = ["ID", "Clump_Thickness", "Uniformity_Cell_Size", "Uniformity_Cell_Sha
            "Bland_Chromatin", "Normal_Nucleoli", "Mitoses", "Class"]
 data = pd.read_csv(path, names=columns, sep=',')
 
+
+
 Check for null values and unique values in Bare_Nuclei:
 
 data['Bare_Nuclei'] = pd.to_numeric(data['Bare_Nuclei'], errors='coerce')  # '?' becomes NaN

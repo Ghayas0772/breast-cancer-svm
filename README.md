@@ -28,6 +28,7 @@ data['Bare_Nuclei'] = pd.to_numeric(data['Bare_Nuclei'], errors='coerce')
 data['Bare_Nuclei'].fillna(data['Bare_Nuclei'].median(), inplace=True)```
 
 
+
 ### 2. Target Variable Exploration
 
 # Map target classes to 0 (Benign) and 1 (Malignant)

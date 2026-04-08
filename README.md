@@ -21,4 +21,5 @@ data = pd.read_csv(path, names=columns, sep=',')
 print(data.head())
 print(data.info())
 
-''' Handling Missing Values in Bare_Nuclei '''
+'''
+Handling Missing Values in Bare_Nuclei

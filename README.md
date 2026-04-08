@@ -4,7 +4,7 @@ This project focuses on exploratory data analysis (EDA), data cleaning, and prep
 
 1. Data Loading & Inspection
 
-import pandas as pd
+```import pandas as pd
 import numpy as np
 
 # Load dataset
@@ -16,26 +16,26 @@ data = pd.read_csv(path, names=columns, sep=',')
 
 # Check first rows
 print(data.head())
-print(data.info())
+print(data.info())```
 
 
 Handling Missing Values in Bare_Nuclei
 
-# Convert Bare_Nuclei to numeric; '?' becomes NaN
+```# Convert Bare_Nuclei to numeric; '?' becomes NaN
 data['Bare_Nuclei'] = pd.to_numeric(data['Bare_Nuclei'], errors='coerce')
 
 # Fill missing values with median
-data['Bare_Nuclei'].fillna(data['Bare_Nuclei'].median(), inplace=True)
+data['Bare_Nuclei'].fillna(data['Bare_Nuclei'].median(), inplace=True)``
 
 
 2. Target Variable Exploration
 
-# Map target classes to 0 (Benign) and 1 (Malignant)
+```# Map target classes to 0 (Benign) and 1 (Malignant)
 data['Class'] = data['Class'].map({2: 0, 4: 1})
 
 # Check distribution
 print(data['Class'].value_counts())
-print(data['Class'].value_counts(normalize=True))
+print(data['Class'].value_counts(normalize=True))```
 
 
 Key findings:
@@ -49,13 +49,13 @@ The dataset has a slight class imbalance (~65% benign vs 35% malignant).
 3. Feature Engineering & Preprocessing
 
 3.1 Separate Features & Target
-
+```
 X = data.drop(["ID", "Class"], axis=1)
 y = data["Class"]
-
+```
 
 3.2 Clean Column Names and Strings
-
+```
 # Remove leading/trailing spaces in all column names
 data.columns = data.columns.str.strip()
 
@@ -63,7 +63,7 @@ data.columns = data.columns.str.strip()
 string_cols = data.select_dtypes(include="object").columns
 data[string_cols] = data[string_cols].apply(lambda x: x.str.strip())
 
-
+```
 4. Exploratory Data Analysis (EDA)
 
 4.1 Feature Distribution & Correlations
@@ -74,12 +74,12 @@ import seaborn as sns
 # Histograms
 data.drop('ID', axis=1).hist(bins=15, figsize=(15,10))
 plt.show()
-
+```
 # Correlation heatmap
 plt.figure(figsize=(12, 8))
 sns.heatmap(data.corr(), annot=True, fmt=".2f", cmap='coolwarm')
 plt.show()
-
+```
 
 4.2 Correlation Analysis
 
@@ -95,7 +95,7 @@ Bare_Nuclei (~0.82)
 
 We use the Interquartile Range (IQR) method to identify extreme values.
 
-# Identify numeric columns
+```# Identify numeric columns
 numeric_cols = data.select_dtypes(include=np.number).columns
 
 # Detect outliers
@@ -112,12 +112,12 @@ for col in numeric_cols:
 # Unique outlier rows
 outlier_indices = list(set(outlier_indices))
 print(f"Total unique rows with any outlier: {len(outlier_indices)}")
-
+```
 
 Outlier Handling: Capping (Winsorization)
 
 To avoid losing data, we cap extreme values at the lower and upper bounds.
-
+```
 for col in numeric_cols:
     Q1 = data[col].quantile(0.25)
     Q3 = data[col].quantile(0.75)
@@ -129,7 +129,7 @@ for col in numeric_cols:
     data[col] = np.where(data[col] < lower, lower, data[col])
     data[col] = np.where(data[col] > upper, upper, data[col])
 
-
+```
 6. Summary
 
 Dataset Size: 699 observations, 11 features.

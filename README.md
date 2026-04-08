@@ -5,10 +5,10 @@ This project focuses on exploratory data analysis (EDA), data cleaning, and prep
 ### 1. Data Loading & Inspection
 
 ```import pandas as pd
-import numpy as np
+import numpy as np```
 
 # Load dataset
-path = "datasets/breast-cancer-wisconsin.data"
+```path = "datasets/breast-cancer-wisconsin.data"
 columns = ["ID", "Clump_Thickness", "Uniformity_Cell_Size", "Uniformity_Cell_Shape",
            "Marginal_Adhesion", "Single_Epithelial_Cell_Size", "Bare_Nuclei",
            "Bland_Chromatin", "Normal_Nucleoli", "Mitoses", "Class"]
@@ -25,7 +25,7 @@ print(data.info())```
 data['Bare_Nuclei'] = pd.to_numeric(data['Bare_Nuclei'], errors='coerce')
 
 # Fill missing values with median
-data['Bare_Nuclei'].fillna(data['Bare_Nuclei'].median(), inplace=True)``
+data['Bare_Nuclei'].fillna(data['Bare_Nuclei'].median(), inplace=True)```
 
 
 ### 2. Target Variable Exploration
@@ -62,7 +62,6 @@ data.columns = data.columns.str.strip()
 # Remove extra spaces in string columns
 string_cols = data.select_dtypes(include="object").columns
 data[string_cols] = data[string_cols].apply(lambda x: x.str.strip())
-
 ```
 4. Exploratory Data Analysis (EDA)
 
